@@ -84,7 +84,7 @@ const MODE_OPTIONS = {
   GameOptionsCloud: { on: ['GAMEOPTION_CRITICAL_HIT_PREVIEW'], off: [] },
 };
 
-const VICTORIES_ON = ['VICTORY_POINTS', 'VICTORY_TIME'];
+const VICTORIES_ON = ['VICTORY_POINTS', 'VICTORY_TIME', 'VICTORY_CONQUEST']; // conquest is on in the organiser's file
 const VICTORIES_OFF = ['VICTORY_DOUBLE', 'VICTORY_AMBITION'];
 
 const CALAMITIES = 'OCCURRENCELEVEL_CALAMITIES_VERY_LOW'; // "Very Rare" — organiser-confirmed

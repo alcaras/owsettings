@@ -53,7 +53,7 @@ test('duel preset: per-mode crits/undo/ruins and map settings', () => {
     const v = listItems(s, 'defaultVictories', 'string');
     assert.ok(v.includes('VICTORY_POINTS') && v.includes('VICTORY_TIME'));
     assert.ok(!v.includes('VICTORY_DOUBLE') && !v.includes('VICTORY_AMBITION'));
-    assert.ok(v.includes('VICTORY_CONQUEST'), 'conquest passes through');
+    assert.ok(v.includes('VICTORY_CONQUEST'), 'conquest on');
     assert.deepEqual(listItems(s, 'defaultPlayerNation', 'string').slice(0, 2), ['NONE', 'NONE']);
     assert.deepEqual(listItems(s, 'defaultPlayerTeam', 'int').slice(0, 2), ['0', '1']);
     assert.deepEqual(listItems(s, 'defaultPlayerAIControlled', 'boolean').slice(0, 2), ['false', 'false']);
