@@ -1,0 +1,12 @@
+{
+  "name": "owsettings",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Old World tournament settings — sets GameOptionsSave.xml to tournament / FFA presets, in the browser",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "presets": "python3 scripts/build_presets.py",
+    "serve": "python3 -m http.server 8765"
+  }
+}

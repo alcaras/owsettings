@@ -1,0 +1,142 @@
+// Human labels for the game IDs we touch — en-US strings from the game's
+// text-*.xml (Reference/XML/Infos). Anything not listed falls back to a
+// de-prefixed, title-cased id in prettyId().
+
+export const GAME_OPTION = {
+  GAMEOPTION_COMPETITIVE_MODE: 'Competitive Mode',
+  GAMEOPTION_COMPETITIVE_EVENTS: 'Competitive Events',
+  GAMEOPTION_LOWER_CHARACTER_YIELDS: 'Lower Character Yields',
+  GAMEOPTION_COMPETITIVE_CITY_GIFTING: 'Competitive Mode City Gifting',
+  GAMEOPTION_NO_DISTANT_RAIDS: 'No Distant Raids',
+  GAMEOPTION_FREE_LAW_PREREQS: 'Free Laws Requires Techs',
+  GAMEOPTION_NO_BONUS_IMPROVEMENTS: 'No Ancient Ruins',
+  GAMEOPTION_PLAY_TO_WIN: 'Ruthless AI',
+  GAMEOPTION_NO_ORGANIZED_TRIBES: 'No Organized Tribes',
+  GAMEOPTION_CRITICAL_HIT_PREVIEW: 'Show Pending Critical Hits',
+  GAMEOPTION_NO_UNDO: 'No Undo',
+  GAMEOPTION_ALLOW_OBSERVE: 'Allow Observers',
+  GAMEOPTION_NO_STARTING_TECHS: 'No Starting Techs',
+  GAMEOPTION_NO_EVENTS: 'No Events',
+  GAMEOPTION_NO_CHARACTERS: 'No Characters',
+  GAMEOPTION_REVEALED_MAP: 'Revealed Map',
+  GAMEOPTION_NO_FOG_OF_WAR: 'No Fog of War',
+  GAMEOPTION_ONE_CITY_CHALLENGE: 'One City Challenge',
+  GAMEOPTION_RANDOMIZE_TECHS: 'Random Tech Tree',
+  GAMEOPTION_RANDOMIZE_IMPROVEMENTS: 'Random Improvements',
+  GAMEOPTION_BARBARIANS_ONLY: 'Barbarians Only',
+  GAMEOPTION_TRIBES_ONLY: 'Tribes Only',
+  GAMEOPTION_CUSTOM_LEADER: 'Allow Customized Leaders',
+  GAMEOPTION_NO_UNIT_GIFTING: 'No Unit Gifting',
+  GAMEOPTION_NO_CITY_GIFTING: 'No City Gifting',
+  GAMEOPTION_ALLOW_BAD_COGNOMENS: 'Allow Negative Cognomens',
+};
+
+export const VICTORY = {
+  VICTORY_POINTS: 'Points',
+  VICTORY_TIME: 'Time',
+  VICTORY_DOUBLE: 'Double',
+  VICTORY_AMBITION: 'Ambition',
+  VICTORY_CONQUEST: 'Conquest',
+  VICTORY_ALLIANCE: 'Alliance',
+};
+
+export const VALUE = {
+  MAPSIZE_SMALLEST: 'Duel', MAPSIZE_TINY: 'Tiny', MAPSIZE_SMALL: 'Small',
+  MAPSIZE_MEDIUM: 'Medium', MAPSIZE_LARGE: 'Large', MAPSIZE_HUGE: 'Huge',
+  MAPASPECTRATIO_SQUARE: 'Square', MAPASPECTRATIO_WIDE: 'Wide',
+  MAPASPECTRATIO_ULTRAWIDE: 'Ultra-wide', MAPASPECTRATIO_DYNAMIC: 'Dynamic',
+  TRIBELEVEL_NONE: 'None', TRIBELEVEL_PASSIVE: 'Passive', TRIBELEVEL_WEAK: 'Weak',
+  TRIBELEVEL_NORMAL: 'Normal', TRIBELEVEL_STRONG: 'Strong', TRIBELEVEL_RAGING: 'Raging',
+  ADVANTAGE_NONE: 'None',
+  TEAMNATION_GAME_UNIQUE: 'Unique', TEAMNATION_TEAM_UNIQUE: 'Unique within each Team',
+  TEAMNATION_ALLOW_DUPLICATES: 'Allow Duplicates',
+  DEVELOPMENT_DEFAULT: 'Default', DEVELOPMENT_NONE: 'None', DEVELOPMENT_FLEDGLING: 'Fledgling',
+  DEVELOPMENT_ESTABLISHED: 'Established', DEVELOPMENT_ADVANCED: 'Advanced', DEVELOPMENT_MASSIVE: 'Massive',
+  FORCEMARCH_UNLIMITED: 'Unlimited', FORCEMARCH_DOUBLE_FATIGUE: 'Double Fatigue', FORCEMARCH_DISABLE: 'Disabled',
+  EVENTLEVEL_NONE: 'No Events', EVENTLEVEL_MINIMAL: 'Minimal', EVENTLEVEL_LOW: 'Low',
+  EVENTLEVEL_MODERATE: 'Moderate', EVENTLEVEL_HIGH: 'High',
+  VICTORYPOINT_LOW: 'Low', VICTORYPOINT_NORMAL: 'Normal', VICTORYPOINT_MEDIUM_HIGH: 'High', VICTORYPOINT_HIGH: 'Very High',
+  TURNSTYLE_SIMULTANEOUS: 'Simultaneous', TURNSTYLE_LOOSE: 'Loose', TURNSTYLE_NORMAL: 'Adaptive',
+  TURNSTYLE_TIGHT: 'Tight', TURNSTYLE_TEAMS: 'Strict (Teams)', TURNSTYLE_STRICT: 'Strict (Players)',
+  TURNTIMER_NONE: 'None', TURNTIMER_SLOW: 'Slow', TURNTIMER_MEDIUM: 'Medium', TURNTIMER_FAST: 'Fast',
+  TURNTIMER_24_HOUR: '24 hours', TURNTIMER_12_HOUR: '12 hours', TURNTIMER_8_HOUR: '8 hours',
+  TURNTIMER_4_HOUR: '4 hours', TURNTIMER_2_HOUR: '2 hours', TURNTIMER_1_HOUR: '1 hour',
+  OCCURRENCELEVEL_CALAMITIES_NONE: 'None', OCCURRENCELEVEL_CALAMITIES_VERY_LOW: 'Very Rare',
+  OCCURRENCELEVEL_CALAMITIES_LOW: 'Rare', OCCURRENCELEVEL_CALAMITIES_NORMAL: 'Default',
+  OCCURRENCELEVEL_CALAMITIES_HIGH: 'Common', OCCURRENCELEVEL_CALAMITIES_VERY_HIGH: 'Very Common',
+  NONE: 'Pick Later', DYNASTY_DEFAULT: 'Default', TRAIT_PICK_LATER_ARCHETYPE: 'Pick Later',
+  MAPCLASS_MapScriptArchipelago: 'Archipelago', MAPCLASS_AridPlateau: 'Arid Plateau',
+  MAPCLASS_MapScriptBay: 'Bay', MAPCLASS_CoastalRainBasin: 'Coastal Rain Basin',
+  MAPCLASS_MapScriptContinent: 'Continent', MAPCLASS_MapscriptJungle: 'Deep Jungle',
+  MAPCLASS_MapScriptDesert: 'Desert', MAPCLASS_MapScriptDesolation: 'Desolation',
+  MAPCLASS_MapScriptDonut: 'Donut', MAPCLASS_MapScriptDota: 'Duel of the Ancients',
+  MAPCLASS_MapScriptEbbingSea: 'Ebbing Sea', MAPCLASS_MapScriptHardwoodForest: 'Hardwood Forest',
+  MAPCLASS_MapScriptHighlands: 'Highlands', MAPCLASS_MapScriptInlandSea2: 'Inland Sea',
+  MAPCLASS_MapScriptLakesAndGulfs: 'Lakes and Gulfs', MAPCLASS_MapScriptMediterranean: 'Mediterranean',
+  MAPCLASS_MapscriptMountainPass: 'Mountain Pass', MAPCLASS_MapScriptContinents: 'Multiple Continents',
+  MAPCLASS_MapScriptNorthernOcean: 'Northern Ocean', MAPCLASS_MapScriptPlayerIslands: 'Player Islands',
+  MAPCLASS_MapScriptSeaside: 'Seaside', MAPCLASS_MapscriptWetlands: 'Wetlands',
+  MAPCLASS_RANDOM: 'Random',
+  MAP_OPTION_ARID_WATER_SIZE_SMALL: 'Small', MAP_OPTION_ARID_WATER_SIZE_LARGE: 'Large',
+  MAP_OPTION_WATER_SIZE_RANDOM: 'Random',
+  MAP_OPTION_CONTINENT_TERRAIN_NONE: 'None',
+  MAP_OPTION_ARCHIPELAGO_LANDMASS_SMALL: 'Small', MAP_OPTION_ARCHIPELAGO_LANDMASS_MEDIUM: 'Medium',
+  MAP_OPTION_ARCHIPELAGO_LANDMASS_LARGE: 'Large',
+  MAP_OPTION_ARCHIPELAGO_WATER_SIZE_MERGED: 'Small', MAP_OPTION_ARCHIPELAGO_WATER_SIZE_SMALL: 'Medium',
+  MAP_OPTION_ARCHIPELAGO_WATER_SIZE_LARGE: 'Large',
+  MAP_OPTION_DESERT_COAST_LUSH: 'Lush', MAP_OPTION_DESERT_COAST_DRY: 'Dry', MAP_OPTION_DESERT_COAST_NONE: 'None',
+  MAP_OPTION_DESERT_SIZE_NORMAL: 'Standard',
+  MAP_OPTION_DONUT_IRREGULARITY_LOW: 'Low', MAP_OPTION_DONUT_IRREGULARITY_MEDIUM: 'Medium',
+  MAP_OPTION_DONUT_IRREGULARITY_HIGH: 'High',
+  MAP_OPTION_PATH_NARROW: 'Narrow', MAP_OPTION_PATH_WIDE: 'Wide',
+  True: 'On', False: 'Off', true: 'On', false: 'Off',
+};
+
+export const SETTING = {
+  defaultPlayers: 'Players',
+  defaultTeams: 'Teams',
+  defaultTribeLevel: 'Tribal Strength',
+  defaultAdvantage: 'AI Advantage',
+  defaultTeamNation: 'Nations',
+  defaultDevelopment: 'Prosperity',
+  defaultHumanDevelopment: 'Human Prosperity',
+  defaultForceMarch: 'Forced March',
+  defaultEventLevel: 'Event Level',
+  defaultVictoryPoint: 'Points to Win',
+  defaultMapClass: 'Map Script',
+  defaultMapFile: 'Map File',
+  defaultMapSize: 'Map Size',
+  defaultMapAspectRatio: 'Map Aspect Ratio',
+  defaultTurnStyle: 'Turn Style',
+  defaultTurnTimer: 'Turn Timer',
+  MAP_OPTIONS_SINGLE_MIRROR: 'Mirror Map',
+  MAP_OPTIONS_SINGLE_POINT_SYMMETRY: 'Point Symmetry',
+  MAP_OPTIONS_MULTI_ARID_WATER_SIZE: 'Water Size',
+  MAP_OPTIONS_MULTI_CONTINENT_TERRAIN: 'Extreme Terrain',
+  MAP_OPTIONS_ARCHIPELAGO_LANDMASS: 'Islands Size',
+  MAP_OPTIONS_MULTI_ARCHIPELAGO_WATER_SIZE: 'Water Size',
+  MAP_OPTIONS_DESERT_COAST: 'Desert Coast',
+  MAP_OPTIONS_DESERT_SIZE: 'Desert Size',
+  MAP_OPTIONS_DONUT_IRREGULARITY: 'Donut Irregularity',
+  MAP_OPTIONS_MULTI_DOTA_INNER_TERRAIN: 'Separating Terrain',
+  MAP_OPTIONS_MULTI_DOTA_OUTER_TERRAIN: 'Outer Terrain',
+  MAP_OPTIONS_MULTI_DOTA_PATH_WIDTH: 'Path Width',
+  OCCURRENCECLASS_CALAMITIES: 'Calamities',
+};
+
+export const SECTION_LABEL = {
+  GameOptionsHotseat: 'Hotseat',
+  GameOptionsNetwork: 'Network',
+  GameOptionsCloud: 'Play by Cloud',
+};
+
+export function prettyId(id) {
+  if (id == null) return '—';
+  if (id === '') return '(empty)';
+  if (VALUE[id]) return VALUE[id];
+  if (GAME_OPTION[id]) return GAME_OPTION[id];
+  if (VICTORY[id]) return VICTORY[id];
+  if (SETTING[id]) return SETTING[id];
+  const bare = id.replace(/^(MAP_OPTION_[A-Z]+_|MAP_OPTIONS?_(MULTI_|SINGLE_)?|GAMEOPTION_|MAPCLASS_(MapScript|Mapscript)?|[A-Z]+_)/, '');
+  return bare.toLowerCase().replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+}

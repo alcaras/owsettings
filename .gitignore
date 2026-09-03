@@ -1,0 +1,11 @@
+# Real settings files contain the player's name + email — never commit.
+GameOptionsSave*.xml
+!test/fixtures/*.xml
+
+node_modules/
+.DS_Store
+*.log
+__pycache__/
+*.pyc
+.claude/
+shots/

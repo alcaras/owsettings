@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- No network access at all beyond fonts: the settings file never leaves this page. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'" />
+  <title>Old World Tournament Settings</title>
+  <meta name="description" content="Set Old World's Hotseat, Network and Play-by-Cloud lobbies to tournament (duel) or FFA settings for any map in the tournament pool — in your browser, without launching the game." />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hdr">
+    <div class="hdr__inner">
+      <a class="hdr__brand" href="./">
+        <span class="hdr__mark" aria-hidden="true"><img src="img/mark.png" alt="" /></span>
+        <span class="hdr__title-wrap">
+          <span class="hdr__sub">Old World</span>
+          <span class="hdr__title">Tournament Settings</span>
+        </span>
+      </a>
+      <nav class="hdr__nav" aria-label="Related sites">
+        <a class="hdr__navlink" href="https://alcaras.github.io/owtournamentatlas/">Tournament Atlas</a>
+        <a class="hdr__navlink" href="https://alcaras.github.io/owffaatlas/">FFA Atlas</a>
+        <a class="hdr__navlink" href="https://alcaras.github.io/owreference/">Reference</a>
+        <a class="hdr__navlink" href="https://github.com/alcaras/owsettings">Source</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <span class="page-eyebrow">Old World · Community Tournament</span>
+    <h1 class="page-title">Set up your lobby without launching the game</h1>
+    <p class="lede">
+      Pick a <b>tournament map</b> (or an FFA), choose which lobbies to update, point this page at
+      your <code>GameOptionsSave.xml</code>, and it rewrites just the tournament settings —
+      everything else in your file stays exactly as it was.
+    </p>
+    <span class="privacy"><span class="privacy__dot"></span>Your file is processed on this device only. Nothing is uploaded — this page cannot make network requests.</span>
+
+    <div class="callouts">
+      <div class="callout"><b>Quit Old World first.</b> The game rewrites this file when it closes, so anything you change while it's running is lost.</div>
+      <div class="callout"><b>Back up your settings file.</b> The folder flow below writes a dated backup next to the original automatically; if you use the download flow, keep the original file somewhere safe before replacing it.</div>
+    </div>
+
+    <!-- ── Step 1: preset ── -->
+    <section class="step" id="step-preset">
+      <div class="step__hd">
+        <span class="step__num">Step 1</span>
+        <h2 class="step__title">Choose a preset</h2>
+        <span class="step__hint" id="preset-hint"></span>
+      </div>
+      <div class="seg" role="tablist">
+        <button class="seg__btn is-on" data-kind="duel" role="tab">Tournament duel<span class="seg__sub">1v1 · one of the 18 pool maps · no ruins</span></button>
+        <button class="seg__btn" data-kind="ffa" role="tab">Free-for-all<span class="seg__sub">3–10 players · any script · ruins on</span></button>
+      </div>
+
+      <div id="duel-pane">
+        <div class="maps" id="duel-maps"></div>
+      </div>
+
+      <div id="ffa-pane" hidden>
+        <div class="ffa-ctl">
+          <div class="field">
+            <span class="field__label">Players</span>
+            <input type="range" id="ffa-players" min="3" max="10" value="10" />
+            <span class="field__val" id="ffa-players-val">10</span>
+          </div>
+          <div class="field">
+            <label class="field__label" for="ffa-size">Map size</label>
+            <select id="ffa-size"></select>
+          </div>
+          <div class="field">
+            <label class="field__label" for="ffa-aspect">Aspect ratio</label>
+            <select id="ffa-aspect"></select>
+          </div>
+          <p class="ffa-note">Same tournament ruleset, but with Ancient Ruins on, every player on their own team, and no mirror or point symmetry (FFA starts are placed by the game). Script options keep whatever your file already has.</p>
+        </div>
+        <div class="maps" id="ffa-maps"></div>
+      </div>
+    </section>
+
+    <!-- ── Step 2: lobbies ── -->
+    <section class="step" id="step-lobbies">
+      <div class="step__hd">
+        <span class="step__num">Step 2</span>
+        <h2 class="step__title">Which lobbies to update</h2>
+        <span class="step__hint">Each is its own set of defaults in the game</span>
+      </div>
+      <div class="lobbies">
+        <label class="lobby"><input type="checkbox" data-section="network" checked />
+          <span><span class="lobby__name">Network</span><span class="lobby__desc">Live games. Critical hits <b>hidden</b>, Tight turns, Slow timer, observers allowed. Undo stays enabled so a cloud conversion keeps it.</span></span></label>
+        <label class="lobby"><input type="checkbox" data-section="cloud" checked />
+          <span><span class="lobby__name">Play by Cloud</span><span class="lobby__desc">Async games. Critical hits <b>shown</b>, Strict turns, no timer, undo allowed.</span></span></label>
+        <label class="lobby"><input type="checkbox" data-section="hotseat" checked />
+          <span><span class="lobby__name">Hotseat</span><span class="lobby__desc">Same as cloud: crits <b>shown</b>, Strict turns, no timer, undo allowed.</span></span></label>
+      </div>
+    </section>
+
+    <!-- ── Step 3: file ── -->
+    <section class="step" id="step-file">
+      <div class="step__hd">
+        <span class="step__num">Step 3</span>
+        <h2 class="step__title">Your settings file</h2>
+        <span class="step__hint">
+          <span class="os" id="os-toggle"><button data-os="win">Windows</button><button data-os="mac">Mac</button></span>
+        </span>
+      </div>
+
+      <div class="filebox">
+        <div class="panel">
+          <div class="panel__title">Where it lives</div>
+          <p>Steam, Epic and GOG all use the same folder:</p>
+          <div class="path"><code id="path-text"></code><button class="btn btn--sm" id="copy-path">Copy</button></div>
+          <p class="hint" id="path-hint"></p>
+
+          <div id="flow-fsa" hidden>
+            <div class="btnrow">
+              <button class="btn btn--primary" id="pick-dir">Choose the <b>OldWorld</b> folder…</button>
+            </div>
+            <p class="hint">Your browser will ask to let this page read and save files in that folder. A dated backup is written before anything is changed.</p>
+          </div>
+
+          <div id="flow-file" hidden>
+            <div class="btnrow">
+              <label class="btn btn--primary" for="pick-file">Choose <b>GameOptionsSave.xml</b>…</label>
+              <input type="file" id="pick-file" accept=".xml,application/xml,text/xml" hidden />
+            </div>
+            <p class="hint">Your browser can't save files in place, so you'll get the updated file as a download to drop back into the folder above.</p>
+          </div>
+
+          <div class="status" id="file-status" hidden></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__title">What you'll get</div>
+          <table class="summary" id="summary"></table>
+          <ul class="per" id="summary-per"></ul>
+        </div>
+      </div>
+
+      <div class="diff" id="diff" hidden>
+        <div class="step__hd">
+          <span class="step__num">Preview</span>
+          <h2 class="step__title">What will change</h2>
+          <span class="step__hint" id="diff-count"></span>
+        </div>
+        <div id="diff-body"></div>
+        <div class="btnrow">
+          <button class="btn btn--primary btn--lg" id="save-dir" hidden>Back up &amp; save to folder</button>
+          <button class="btn btn--primary btn--lg" id="save-dl" hidden>Download updated GameOptionsSave.xml</button>
+          <button class="btn" id="dl-backup" hidden>Download a backup of the original</button>
+          <button class="btn" id="start-over">Start over</button>
+        </div>
+      </div>
+
+      <div class="done" id="done" hidden>
+        <div class="done__title">Done</div>
+        <p id="done-text"></p>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div><span class="foot__label">Data</span> Pool from the <a href="https://alcaras.github.io/owtournamentatlas/">Tournament Atlas</a><span class="foot__dot">·</span>Rules: Old World Community Tournament<span class="foot__dot">·</span>IDs verified against the game's Reference XML</div>
+      <div><span class="foot__label">Privacy</span> Runs entirely in your browser — nothing is uploaded<span class="foot__dot">·</span><a href="https://github.com/alcaras/owsettings">Source</a></div>
+    </footer>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
