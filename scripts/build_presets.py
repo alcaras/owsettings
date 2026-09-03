@@ -153,7 +153,8 @@ def duel_maps():
             "pointSymmetry": bool(c["sym"]),
             "mirror": True,
             "opts": opts,
-            "art": f"img/maps/{art_for(c['group'])}.png",
+            # exact-config preview from the atlas (owtournamentatlas/public/img/atlas/<slug>/seed-1.png)
+            "art": f"img/maps/duel/{slug}.png",
             "atlas": f"https://alcaras.github.io/owtournamentatlas/#cfg-{slug}",
         })
     return out

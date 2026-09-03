@@ -29,7 +29,7 @@ export default {
           "valueLabel": "Small"
         }
       ],
-      "art": "img/maps/archipelago.png",
+      "art": "img/maps/duel/archipelago-land-lg-water-sm-smallest-square-sym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-archipelago-land-lg-water-sm-smallest-square-sym"
     },
     {
@@ -59,7 +59,7 @@ export default {
           "valueLabel": "Small"
         }
       ],
-      "art": "img/maps/archipelago.png",
+      "art": "img/maps/duel/archipelago-land-lg-water-sm-smallest-wide-nosym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-archipelago-land-lg-water-sm-smallest-wide-nosym"
     },
     {
@@ -83,7 +83,7 @@ export default {
           "valueLabel": "Small"
         }
       ],
-      "art": "img/maps/arid-plateau.png",
+      "art": "img/maps/duel/arid-plateau-small-seas-smallest-square-sym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-arid-plateau-small-seas-smallest-square-sym"
     },
     {
@@ -107,7 +107,7 @@ export default {
           "valueLabel": "Large"
         }
       ],
-      "art": "img/maps/arid-plateau.png",
+      "art": "img/maps/duel/arid-plateau-large-seas-smallest-square-sym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-arid-plateau-large-seas-smallest-square-sym"
     },
     {
@@ -124,7 +124,7 @@ export default {
       "pointSymmetry": false,
       "mirror": true,
       "opts": [],
-      "art": "img/maps/coastal-rain-basin.png",
+      "art": "img/maps/duel/coastal-rain-basin-smallest-wide-nosym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-coastal-rain-basin-smallest-wide-nosym"
     },
     {
@@ -141,7 +141,7 @@ export default {
       "pointSymmetry": true,
       "mirror": true,
       "opts": [],
-      "art": "img/maps/coastal-rain-basin.png",
+      "art": "img/maps/duel/coastal-rain-basin-smallest-square-sym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-coastal-rain-basin-smallest-square-sym"
     },
     {
@@ -165,7 +165,7 @@ export default {
           "valueLabel": "None"
         }
       ],
-      "art": "img/maps/continent.png",
+      "art": "img/maps/duel/continent-smallest-wide-sym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-continent-smallest-wide-sym"
     },
     {
@@ -195,7 +195,7 @@ export default {
           "valueLabel": "Standard"
         }
       ],
-      "art": "img/maps/desert.png",
+      "art": "img/maps/duel/desert-lush-std-tiny-square-nosym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-desert-lush-std-tiny-square-nosym"
     },
     {
@@ -225,7 +225,7 @@ export default {
           "valueLabel": "Standard"
         }
       ],
-      "art": "img/maps/desert.png",
+      "art": "img/maps/duel/desert-none-std-tiny-square-sym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-desert-none-std-tiny-square-sym"
     },
     {
@@ -249,7 +249,7 @@ export default {
           "valueLabel": "Low"
         }
       ],
-      "art": "img/maps/donut.png",
+      "art": "img/maps/duel/donut-irreg-low-smallest-square-sym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-donut-irreg-low-smallest-square-sym"
     },
     {
@@ -285,7 +285,7 @@ export default {
           "valueLabel": "Narrow"
         }
       ],
-      "art": "img/maps/dota.png",
+      "art": "img/maps/duel/dota-jungle-smallest-square-sym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-dota-jungle-smallest-square-sym"
     },
     {
@@ -321,7 +321,7 @@ export default {
           "valueLabel": "Narrow"
         }
       ],
-      "art": "img/maps/dota.png",
+      "art": "img/maps/duel/dota-sand-smallest-square-sym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-dota-sand-smallest-square-sym"
     },
     {
@@ -357,7 +357,7 @@ export default {
           "valueLabel": "Narrow"
         }
       ],
-      "art": "img/maps/dota.png",
+      "art": "img/maps/duel/dota-water-smallest-square-sym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-dota-water-smallest-square-sym"
     },
     {
@@ -374,7 +374,7 @@ export default {
       "pointSymmetry": false,
       "mirror": true,
       "opts": [],
-      "art": "img/maps/hardwood-forest.png",
+      "art": "img/maps/duel/hardwood-forest-smallest-wide-nosym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-hardwood-forest-smallest-wide-nosym"
     },
     {
@@ -391,7 +391,7 @@ export default {
       "pointSymmetry": true,
       "mirror": true,
       "opts": [],
-      "art": "img/maps/inland-sea.png",
+      "art": "img/maps/duel/inland-sea-smallest-square-sym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-inland-sea-smallest-square-sym"
     },
     {
@@ -408,7 +408,7 @@ export default {
       "pointSymmetry": false,
       "mirror": true,
       "opts": [],
-      "art": "img/maps/inland-sea.png",
+      "art": "img/maps/duel/inland-sea-smallest-wide-nosym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-inland-sea-smallest-wide-nosym"
     },
     {
@@ -425,7 +425,7 @@ export default {
       "pointSymmetry": true,
       "mirror": true,
       "opts": [],
-      "art": "img/maps/mountain-pass.png",
+      "art": "img/maps/duel/mountain-pass-smallest-wide-sym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-mountain-pass-smallest-wide-sym"
     },
     {
@@ -442,7 +442,7 @@ export default {
       "pointSymmetry": true,
       "mirror": true,
       "opts": [],
-      "art": "img/maps/wetlands.png",
+      "art": "img/maps/duel/wetlands-smallest-square-sym.png",
       "atlas": "https://alcaras.github.io/owtournamentatlas/#cfg-wetlands-smallest-square-sym"
     }
   ],
