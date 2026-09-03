@@ -32,7 +32,7 @@ img/maps/*.png             thumbnails copied from owreference/public/img/mapscri
    Undo allowed everywhere (`GAMEOPTION_NO_UNDO` absent) so a network → cloud conversion keeps it.
 3. **Ruins:** duel = `GAMEOPTION_NO_BONUS_IMPROVEMENTS` on; FFA = off. That id *is* "No Ancient Ruins".
 4. **Calamities = `OCCURRENCELEVEL_CALAMITIES_VERY_LOW`** ("Very Rare") — from the organiser's
-   file; the rules doc says "Rare" (`_LOW`). Organiser decision pending; change one constant.
+   file; the rules doc says "Rare" (`_LOW`). Organiser confirmed Very Rare 2026-09-02.
 5. **Seats:** first N seats normalised (nation NONE = Pick Later, team i, dynasty DEFAULT,
    archetype PICK_LATER, human). Arrays are padded, never truncated. Difficulty untouched.
 6. **Network also forces `GAMEOPTION_ALLOW_OBSERVE` on.** Every chosen lobby empties
@@ -56,5 +56,5 @@ Edit `POOL` in `scripts/build_presets.py` (keep in sync with the atlas `index.as
   on/off/keep per option), generate the full MP option vocabulary + labels into `presets.js`
   from `Reference/XML/Infos` (`gameOption.xml`, `mapOptionsMulti*.xml` + `mapOption*.xml`
   Choices, enum xmls) and the per-script option lists from `MapScripts/*.cs`.
-- Open ruleset decisions: calamities Very Rare (file) vs Rare (rules doc); whether FFA should
+- Open ruleset decision: whether FFA should
   force `NO_UNIT_GIFTING` / `NO_CITY_GIFTING` (currently pass-through).
