@@ -28,14 +28,19 @@ const CORE_SCALARS = {
   defaultForceMarch: 'FORCEMARCH_DOUBLE_FATIGUE',
   defaultEventLevel: 'EVENTLEVEL_MODERATE',
   defaultVictoryPoint: 'VICTORYPOINT_MEDIUM_HIGH', // shows as "High" in-game
+  defaultSuccessionGender: 'SUCCESSIONGENDER_ABSOLUTE_COGNATIC',
+  defaultSuccessionOrder: 'SUCCESSIONORDER_PRIMOGENITURE',
+  defaultMortality: 'MORTALITY_STANDARD',
+  defaultTurnScale: 'TURNSCALE_YEAR',
   defaultMapFile: '',
 };
 
 // Live network games run Tight + Slow timer; cloud/hotseat are strict, untimed.
+// Network starts with 5 simultaneous turns (players switch to Tight on contact).
 const MODE_SCALARS = {
-  GameOptionsNetwork: { defaultTurnStyle: 'TURNSTYLE_TIGHT', defaultTurnTimer: 'TURNTIMER_SLOW' },
-  GameOptionsHotseat: { defaultTurnStyle: 'TURNSTYLE_STRICT', defaultTurnTimer: 'TURNTIMER_NONE' },
-  GameOptionsCloud: { defaultTurnStyle: 'TURNSTYLE_STRICT', defaultTurnTimer: 'TURNTIMER_NONE' },
+  GameOptionsNetwork: { defaultTurnStyle: 'TURNSTYLE_TIGHT', defaultTurnTimer: 'TURNTIMER_SLOW', defaultSimultaneousTurns: '5' },
+  GameOptionsHotseat: { defaultTurnStyle: 'TURNSTYLE_STRICT', defaultTurnTimer: 'TURNTIMER_NONE', defaultSimultaneousTurns: '0' },
+  GameOptionsCloud: { defaultTurnStyle: 'TURNSTYLE_STRICT', defaultTurnTimer: 'TURNTIMER_NONE', defaultSimultaneousTurns: '0' },
 };
 
 const CORE_OPTIONS_ON = [
@@ -60,6 +65,17 @@ const CORE_OPTIONS_OFF = [
   'GAMEOPTION_RANDOMIZE_IMPROVEMENTS',
   'GAMEOPTION_BARBARIANS_ONLY',
   'GAMEOPTION_TRIBES_ONLY',
+  // the rest of the lobby toggles, all OFF in the tournament lobby screenshot (2026-09-03)
+  'GAMEOPTION_CUSTOM_LEADER',
+  'GAMEOPTION_ALLOW_BAD_COGNOMENS',
+  'GAMEOPTION_ROLE_PLAYING',
+  'GAMEOPTION_NO_TEAM_MOVEMENT',
+  'GAMEOPTION_NO_UNIT_GIFTING',
+  'GAMEOPTION_NO_CITY_GIFTING',
+  'GAMEOPTION_LOCKED_SAVE',
+  'GAMEOPTION_RANDOMIZE_FAMILIES',
+  'GAMEOPTION_ALLOW_CITY_RAZING',
+  'GAMEOPTION_MP_JOIN_AS_ANY_PLAYER',
 ];
 // Network: no crit preview, observers on. Cloud/hotseat: crit preview on.
 const MODE_OPTIONS = {
@@ -172,6 +188,17 @@ function applyToSection(sec, name, preset, changes) {
   setMapOption(sec, 'defaultMapOptions', 'MAP_OPTIONS_SINGLE_POINT_SYMMETRY', sym, (old) =>
     note('Point Symmetry', prettyId(old), prettyId(sym)));
 
+  // --- map-gen options every script shares (game defaults; tournament lobby uses them) ---
+  setMapOption(sec, 'defaultMapOptions', 'MAP_OPTIONS_SINGLE_GOOD_PLAYER_START_RESOURCES', 'False', (old) =>
+    note('Balanced Starting Resources', prettyId(old), 'Off'));
+  for (const [name_, value, label, valueLabel] of [
+    ['MAP_OPTIONS_MULTI_RESOURCE_DENSITY', 'MAP_OPTION_MEDIUM_RESOURCES', 'Resource Density', 'Medium'],
+    ['MAP_OPTIONS_CITY_SITE_DENSITY', 'MAP_OPTION_CITY_SITE_DENSITY_HIGH', 'City Site Spacing', 'Tight'],
+    ['MAP_OPTIONS_CITY_SITE_NUMBER', 'MAP_OPTION_CITY_SITE_NUMBER_HIGH', 'City Site Number', 'Maximum'],
+  ]) {
+    setMapOption(sec, 'defaultMapMultiOptions', name_, value, (old) => note(label, prettyId(old), valueLabel));
+  }
+
   // --- script-specific map options (duel pool only) ---
   if (!isFFA) {
     for (const o of preset.map.opts) {
@@ -275,9 +302,13 @@ export function describePreset(preset, sectionKeys) {
     ['Nations', 'Unique'], ['Prosperity', 'Fledgling'], ['Events', 'Moderate'], ['Calamities', 'Very Rare'],
     ['Competitive Mode', 'On (+ events, city gifting, lower character yields, no distant raids, free law prereqs)'],
     ['Ruthless AI · No Organized Tribes', 'On · On'], ['Starting Techs', 'On'], ['Undo', 'Allowed'],
+    ['Gifting · Razing · Team Movement', 'Allowed · Off · Allowed'],
+    ['Customized Leaders · Negative Cognomens · Role Playing', 'Off · Off · Off'],
+    ['Succession', 'Absolute Cognatic · Primogeniture'], ['Mortality · Turn Scale', 'Standard · Years'],
+    ['Resource Density · City Sites', 'Medium · Tight · Maximum'], ['Balanced Starting Resources', 'Off'],
     ['DLC', 'All enabled'], ['Mods in multiplayer', 'Off']);
   const per = [];
-  if (sectionKeys.includes('network')) per.push('Network: crits hidden, Tight turns, Slow timer, observers on');
+  if (sectionKeys.includes('network')) per.push('Network: crits hidden, Tight turns, Slow timer, 5 simultaneous turns, observers on');
   if (sectionKeys.includes('cloud')) per.push('Cloud: crits shown, Strict turns, no timer');
   if (sectionKeys.includes('hotseat')) per.push('Hotseat: crits shown, Strict turns, no timer');
   return { rows, per };

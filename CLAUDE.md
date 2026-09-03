@@ -26,8 +26,14 @@ img/maps/duel/<slug>.png   duel cards: exact-config previews from owtournamentat
 
 1. **Respect their file.** Only the managed set in `apply.js` changes. Unknown/stale ids
    (e.g. `GAMEOPTION_NO_BAD_COGNOMENS`, `NO_GRAND_VIZIERS` — gone from the game) and
-   settings the ruleset doesn't name (gifting flags, resource density, difficulty,
-   `defaultSimultaneousTurns`, connected starts) pass through untouched.
+   settings the ruleset doesn't name (seat difficulty, opponent level, connected starts,
+   script options of scripts not selected) pass through untouched. The managed set was
+   checked toggle-by-toggle against the organiser's lobby screenshots on 2026-09-03: every
+   lobby toggle is enforced (all the misc ones OFF: customized leaders, negative cognomens,
+   role playing, team movement, unit/city gifting, lock save, randomize families, city
+   razing, join-as-any-player), plus succession/mortality/turn scale, resource density
+   Medium, city sites Tight/Maximum, balanced starting resources off, and Network
+   `defaultSimultaneousTurns` = 5 (cloud/hotseat 0).
 2. **Per-lobby diffs:** Network = crits hidden (`GAMEOPTION_CRITICAL_HIT_PREVIEW` off),
    Tight + Slow timer, observers on. Cloud/Hotseat = crits shown, Strict, no timer.
    Undo allowed everywhere (`GAMEOPTION_NO_UNDO` absent) so a network → cloud conversion keeps it.
@@ -57,5 +63,3 @@ Edit `POOL` in `scripts/build_presets.py` (keep in sync with the atlas `index.as
   on/off/keep per option), generate the full MP option vocabulary + labels into `presets.js`
   from `Reference/XML/Infos` (`gameOption.xml`, `mapOptionsMulti*.xml` + `mapOption*.xml`
   Choices, enum xmls) and the per-script option lists from `MapScripts/*.cs`.
-- Open ruleset decision: whether FFA should
-  force `NO_UNIT_GIFTING` / `NO_CITY_GIFTING` (currently pass-through).

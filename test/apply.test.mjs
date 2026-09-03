@@ -28,6 +28,18 @@ test('duel preset: per-mode crits/undo/ruins and map settings', () => {
     assert.ok(o.includes('GAMEOPTION_NO_BONUS_IMPROVEMENTS'), `${key}: no ancient ruins`);
     assert.ok(o.includes('GAMEOPTION_COMPETITIVE_MODE'), `${key}: competitive`);
     assert.ok(!o.includes('GAMEOPTION_NO_STARTING_TECHS'), `${key}: starting techs on`);
+    for (const id of ['GAMEOPTION_CUSTOM_LEADER', 'GAMEOPTION_ALLOW_BAD_COGNOMENS', 'GAMEOPTION_ROLE_PLAYING',
+      'GAMEOPTION_NO_TEAM_MOVEMENT', 'GAMEOPTION_NO_UNIT_GIFTING', 'GAMEOPTION_NO_CITY_GIFTING', 'GAMEOPTION_LOCKED_SAVE',
+      'GAMEOPTION_RANDOMIZE_FAMILIES', 'GAMEOPTION_ALLOW_CITY_RAZING', 'GAMEOPTION_MP_JOIN_AS_ANY_PLAYER']) {
+      assert.ok(!o.includes(id), `${key}: ${id} off`);
+    }
+    assert.equal(getText(s, 'defaultSuccessionGender'), 'SUCCESSIONGENDER_ABSOLUTE_COGNATIC');
+    assert.equal(getText(s, 'defaultMortality'), 'MORTALITY_STANDARD');
+    assert.equal(getText(s, 'defaultTurnScale'), 'TURNSCALE_YEAR');
+    assert.equal(mapOpt(s, 'defaultMapOptions', 'MAP_OPTIONS_SINGLE_GOOD_PLAYER_START_RESOURCES'), 'False');
+    assert.equal(mapOpt(s, 'defaultMapMultiOptions', 'MAP_OPTIONS_MULTI_RESOURCE_DENSITY'), 'MAP_OPTION_MEDIUM_RESOURCES');
+    assert.equal(mapOpt(s, 'defaultMapMultiOptions', 'MAP_OPTIONS_CITY_SITE_DENSITY'), 'MAP_OPTION_CITY_SITE_DENSITY_HIGH');
+    assert.equal(mapOpt(s, 'defaultMapMultiOptions', 'MAP_OPTIONS_CITY_SITE_NUMBER'), 'MAP_OPTION_CITY_SITE_NUMBER_HIGH');
     assert.equal(getText(s, 'defaultMapClass'), 'MAPCLASS_MapScriptDota');
     assert.equal(getText(s, 'defaultMapSize'), 'MAPSIZE_SMALLEST');
     assert.equal(getText(s, 'defaultMapAspectRatio'), 'MAPASPECTRATIO_SQUARE');
@@ -50,6 +62,8 @@ test('duel preset: per-mode crits/undo/ruins and map settings', () => {
   assert.ok(opts(sec(doc, 'network')).includes('GAMEOPTION_ALLOW_OBSERVE'), 'network observers');
   assert.equal(getText(sec(doc, 'network'), 'defaultTurnStyle'), 'TURNSTYLE_TIGHT');
   assert.equal(getText(sec(doc, 'network'), 'defaultTurnTimer'), 'TURNTIMER_SLOW');
+  assert.equal(getText(sec(doc, 'network'), 'defaultSimultaneousTurns'), '5');
+  assert.equal(getText(sec(doc, 'cloud'), 'defaultSimultaneousTurns'), '0');
   assert.ok(opts(sec(doc, 'cloud')).includes('GAMEOPTION_CRITICAL_HIT_PREVIEW'), 'cloud shows crits');
   assert.ok(opts(sec(doc, 'hotseat')).includes('GAMEOPTION_CRITICAL_HIT_PREVIEW'), 'hotseat shows crits');
   assert.equal(getText(sec(doc, 'cloud'), 'defaultTurnStyle'), 'TURNSTYLE_STRICT');
@@ -61,12 +75,14 @@ test('unmanaged settings pass through; untouched sections are byte-identical', (
   const doc = parse(src);
   applyPreset(doc, { kind: 'duel', map: byTitle('Inland Sea') }, ['cloud']);
 
-  // hotseat's own custom-leader toggle, cloud's stale ids, gifting flags: untouched
+  // untouched hotseat keeps its custom-leader toggle; cloud keeps stale ids and other
+  // options the ruleset doesn't name, but loses the gifting bans (lobby default: off)
   assert.ok(opts(sec(doc, 'hotseat')).includes('GAMEOPTION_CUSTOM_LEADER'));
   assert.ok(opts(sec(doc, 'cloud')).includes('GAMEOPTION_NO_GRAND_VIZIERS'));
-  assert.ok(opts(sec(doc, 'cloud')).includes('GAMEOPTION_NO_UNIT_GIFTING'));
-  assert.equal(mapOpt(sec(doc, 'cloud'), 'defaultMapMultiOptions', 'MAP_OPTIONS_MULTI_RESOURCE_DENSITY'), 'MAP_OPTION_MEDIUM_RESOURCES');
-  assert.equal(getText(sec(doc, 'cloud'), 'defaultSimultaneousTurns'), getText(sec(before, 'cloud'), 'defaultSimultaneousTurns'));
+  assert.ok(!opts(sec(doc, 'cloud')).includes('GAMEOPTION_NO_UNIT_GIFTING'));
+  assert.ok(!opts(sec(doc, 'cloud')).includes('GAMEOPTION_NO_CITY_GIFTING'));
+  assert.equal(mapOpt(sec(doc, 'cloud'), 'defaultMapMultiOptions', 'MAP_OPTIONS_MULTI_DOTA_PATH_WIDTH'), 'MAP_OPTION_PATH_NARROW');
+  assert.equal(getText(sec(doc, 'cloud'), 'defaultOpponentLevel'), getText(sec(before, 'cloud'), 'defaultOpponentLevel'));
 
   // every section other than cloud, plus PlayerOptions, serialises identically
   for (const name of ['PlayerOptions', 'GameOptionsSinglePlayerSimple', 'GameOptionsSinglePlayer',

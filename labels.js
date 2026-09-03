@@ -29,6 +29,12 @@ export const GAME_OPTION = {
   GAMEOPTION_NO_UNIT_GIFTING: 'No Unit Gifting',
   GAMEOPTION_NO_CITY_GIFTING: 'No City Gifting',
   GAMEOPTION_ALLOW_BAD_COGNOMENS: 'Allow Negative Cognomens',
+  GAMEOPTION_ROLE_PLAYING: 'Role Playing',
+  GAMEOPTION_NO_TEAM_MOVEMENT: 'No Team Movement',
+  GAMEOPTION_LOCKED_SAVE: 'Lock Save',
+  GAMEOPTION_RANDOMIZE_FAMILIES: 'Randomize Families',
+  GAMEOPTION_ALLOW_CITY_RAZING: 'Allow City Razing',
+  GAMEOPTION_MP_JOIN_AS_ANY_PLAYER: 'Join as Any Player',
 };
 
 export const VICTORY = {
@@ -89,6 +95,16 @@ export const VALUE = {
   MAP_OPTION_DONUT_IRREGULARITY_LOW: 'Low', MAP_OPTION_DONUT_IRREGULARITY_MEDIUM: 'Medium',
   MAP_OPTION_DONUT_IRREGULARITY_HIGH: 'High',
   MAP_OPTION_PATH_NARROW: 'Narrow', MAP_OPTION_PATH_WIDE: 'Wide',
+  MAP_OPTION_HIGH_RESOURCES: 'High', MAP_OPTION_MEDIUM_RESOURCES: 'Medium', MAP_OPTION_LOW_RESOURCES: 'Low',
+  MAP_OPTION_RANDOM_RESOURCES: 'Random',
+  MAP_OPTION_CITY_SITE_DENSITY_HIGH: 'Tight', MAP_OPTION_CITY_SITE_DENSITY_MEDIUM: 'Medium',
+  MAP_OPTION_CITY_SITE_DENSITY_LOW: 'Sparse', MAP_OPTION_CITY_SITE_DENSITY_RANDOM: 'Random',
+  MAP_OPTION_CITY_SITE_NUMBER_HIGH: 'Maximum', MAP_OPTION_CITY_SITE_NUMBER_MEDIUM: '9 per Player',
+  MAP_OPTION_CITY_SITE_NUMBER_MEDIUM_LOW: '6 per Player', MAP_OPTION_CITY_SITE_NUMBER_LOW: '3 per Player',
+  MAP_OPTION_CITY_SITE_NUMBER_SINGLE: '1 per Player',
+  SUCCESSIONGENDER_ABSOLUTE_COGNATIC: 'Absolute Cognatic', SUCCESSIONORDER_PRIMOGENITURE: 'Primogeniture',
+  MORTALITY_STANDARD: 'Standard', MORTALITY_LONG: 'Long', MORTALITY_REALISTIC: 'Realistic',
+  TURNSCALE_YEAR: 'Years', TURNSCALE_SEMESTER: 'Semesters', TURNSCALE_SEASON: 'Seasons', TURNSCALE_MONTH: 'Months',
   True: 'On', False: 'Off', true: 'On', false: 'Off',
 };
 
@@ -109,6 +125,11 @@ export const SETTING = {
   defaultMapAspectRatio: 'Map Aspect Ratio',
   defaultTurnStyle: 'Turn Style',
   defaultTurnTimer: 'Turn Timer',
+  defaultSimultaneousTurns: 'Simultaneous Turns',
+  defaultSuccessionGender: 'Succession Gender',
+  defaultSuccessionOrder: 'Succession Order',
+  defaultMortality: 'Mortality',
+  defaultTurnScale: 'Turn Scale',
   MAP_OPTIONS_SINGLE_MIRROR: 'Mirror Map',
   MAP_OPTIONS_SINGLE_POINT_SYMMETRY: 'Point Symmetry',
   MAP_OPTIONS_MULTI_ARID_WATER_SIZE: 'Water Size',
